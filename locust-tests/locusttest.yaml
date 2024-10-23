@@ -1,0 +1,21 @@
+apiVersion: tests.load.test/v1alpha1
+kind: LocustTest
+metadata:
+  name: locust-test
+  namespace: default
+spec:
+  image: "locust-test:0.0.2"
+  users: 1000
+  spawnRate: 50
+  runTime: "5s"
+  targetURL: "http://nginx-server"
+  workers: 5
+  masterResources:
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+  workerResources:
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
+  startTime: "2024-10-23T02:48:00Z"

@@ -1,0 +1,23 @@
+# permissions for end users to view locusttests.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: locust-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: locusttest-viewer-role
+rules:
+- apiGroups:
+  - tests.load.test
+  resources:
+  - locusttests
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - tests.load.test
+  resources:
+  - locusttests/status
+  verbs:
+  - get

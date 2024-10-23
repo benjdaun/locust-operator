@@ -1,0 +1,44 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - services
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - tests.load.test
+  resources:
+  - locusttests/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - tests.load.test
+  resources:
+  - locusttests/status
+  verbs:
+  - get
+  - patch
+  - update

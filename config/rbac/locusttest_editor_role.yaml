@@ -1,0 +1,27 @@
+# permissions for end users to edit locusttests.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: locust-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: locusttest-editor-role
+rules:
+- apiGroups:
+  - tests.load.test
+  resources:
+  - locusttests
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - tests.load.test
+  resources:
+  - locusttests/status
+  verbs:
+  - get
